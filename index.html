@@ -183,6 +183,21 @@
             display: block; /* Ensure it is visible */
             z-index: 100;
         }
+        #static-gif-left {
+            position: absolute;
+            left: 10%;  /* Position it on the left side */
+            top: 50%;  /* Align with heading */
+            transform: translateY(-50%); /* Center vertically */
+            max-width: 150px; /* Adjust size */
+        }
+
+        #static-gif-right {
+            position: absolute;
+            right: 10%;  /* Position it on the right side */
+            top: 50%;  /* Align with heading */
+            transform: translateY(-50%); /* Center vertically */
+            max-width: 150px; /* Adjust size */
+        }
 
     </style>
 </head>
@@ -208,8 +223,8 @@
     </div>
     
     <div class="container hidden fade-in" id="trip-page">
-        <img id="bouncing-gif" src="happy.gif" alt="Celebration GIF" style="display: none;">
-        <img id="bouncing-gif2" src="happy.gif" alt="Celebration GIF" style="display: none;">
+        <img id="static-gif-left" src="happy.gif" alt="Celebration GIF" style="display: none;">
+        <img id="static-gif-right" src="happy.gif" alt="Celebration GIF" style="display: none;">
 
         <div class="text-container">
             <h1>💌 Almost 2 year together  💌</h1>
@@ -251,8 +266,9 @@
         function goToTripPage() {
             document.getElementById('main-content').classList.add('hidden');
             document.getElementById('trip-page').classList.remove('hidden');
-            document.getElementById('bouncing-gif').style.display = 'block';
-            document.getElementById('bouncing-gif2').style.display = 'block';
+            // Display both GIFs
+            document.getElementById('static-gif-left').style.display = 'block';
+            document.getElementById('static-gif-right').style.display = 'block';
         }
     </script>
 
