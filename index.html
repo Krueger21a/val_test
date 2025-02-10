@@ -156,7 +156,12 @@
             padding: 20px;
             line-height: 1.6;
         }
-
+        .justified-text {
+            text-align: justify;
+            max-width: 70%; /* Adjust width to avoid stretching too much */
+            margin: 0 auto; /* Centers the text block */
+            line-height: 1.6; /* Improves readability */
+        }
     </style>
 </head>
 <body>
@@ -192,11 +197,11 @@
                     gif.style.left = Math.random() * (window.innerWidth - 200) + 'px';
                     gif.style.top = Math.random() * (window.innerHeight - 200) + 'px';
                     document.getElementById('trip-page').appendChild(gif);
-                    
+
                     setTimeout(() => gif.remove(), 10000);
                 }
             }
-            
+
             document.addEventListener("DOMContentLoaded", function() {
                 createBouncingGifs();
             });
@@ -204,11 +209,13 @@
         <img id="bouncing-gif" src="happy.gif" alt="Celebration GIF" style="max-width: 200px; position: absolute; animation: moveAround 5s infinite alternate ease-in-out;">
         <div class="text-container">
             <h1>💌 Almost 2 year together  💌</h1>
-            <p>Ciao vita, even if nothing happend the first day we met, I will still always remember about it,
+            <p class="justfied-text">
+                Ciao vita, even if nothing happend the first day we met, I will still always remember about it,
                 it's been almost two year since i know you and i feel like you have always been present in my life despite the distance, i wish from the bottom of my hearth that this will one day become an irrelevant part of our relationship.
             But for now, I still feel as the luckiest man of earth to have the chance to spend any second in your company. I know that you might not believe me, that you sometimes find in yourself a bunch of imperfection, but I can assure you that in my eyes, you are everything I can dream off.
                 Smart, pretty, hot, funny and curious, i never get bored or regret being next to you. I wish I could have been here this month but we will have two wait two to three more weeks
-            As you once told me, I also wish to grow old with you and i'm sure we still have a lot of adventure to come</p>
+            As you once told me, I also wish to grow old with you and i'm sure we still have a lot of adventure to come
+            </p>
         </div>
 
         <div class="text-container">
@@ -284,7 +291,7 @@
                 setTimeout(() => gif.remove(), 7000);
             }
         }
-        
+
         @keyframes bounce {
             from { transform: translateY(0px); }
             to { transform: translateY(-50px); }
@@ -318,7 +325,7 @@
             gif.style.transform = 'translate(-50%, -50%)';
             gif.style.animation = 'fadeInOut 5s linear';
             document.getElementById('trip-page').appendChild(gif);
-            
+
             setTimeout(() => gif.remove(), 5000);
         }
         
@@ -327,7 +334,7 @@
             document.getElementById('trip-page').classList.remove('hidden');
             showGif();
         }
-        
+
         @keyframes fadeInOut {
             0% { opacity: 0; }
             50% { opacity: 1; }
