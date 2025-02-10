@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Access</title>
+    <style>
+        #monella-image {
+            max-width: 200px;
+            position: absolute;
+            left: 50%;
+            top: 500px; /* Adjust this value to move it up or down */
+            transform: translateX(-50%);
+            display: none;
+        }
+        @keyframes moveAround {
+            0% { top: 10%; left: 10%; }
+            25% { top: 20%; left: 70%; }
+            50% { top: 60%; left: 50%; }
+            75% { top: 80%; left: 20%; }
+            100% { top: 10%; left: 10%; }
+        }
+        body {
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            background-color: #ffccd5;
+            overflow: hidden;
+            position: relative;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        input {
+            font-size: 20px;
+            padding: 10px;
+            margin: 10px;
+            border: 2px solid #ff5e78;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .btn {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 18px;
+            text-decoration: none;
+            color: white;
+            border-radius: 5px;
+            background-color: #ff5e78;
+            border: none;
+            cursor: pointer;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="password-page">
+        <img src="paris_image.jpeg" alt="Special Image" style="max-width: 200px; display: block; margin: 20px auto; border-radius: 10px;">
+        <h1>Enter the special date we met 💑</h1>
+        <input type="password" id="password-input" placeholder="YYYYMMDD" maxlength="8">
+        <br>
+        <button class="btn" onclick="checkPassword()">Unlock 💕</button>
+        <p id="error-message" style="color: red; display: none;">Oops! Try again. 😉</p>
+    </div>
+
+    <div class="container hidden" id="main-content">
+        <h1 class="typing">Will You Be My Valentine? ❤️</h1>
+        <img src="your_image.jpg" alt="Special Image" style="max-width: 300px; border-radius: 15px; margin-top: 15px;">
+        <img src="your_picture.jpg" alt="Us together"><br>
+        <a href="#trip-page" class="btn yes" onclick="goToTripPage()">Yes! 💕</a>
+        <a href="#" class="btn no" onclick="moveNoButton()">No... 😢</a>
+    </div>
+    
+    <div class="container hidden fade-in" id="trip-page">
+        <script>
+            function createBouncingGifs() {
+                for (let i = 0; i < 5; i++) {
+                    let gif = document.createElement('img');
+                    gif.src = 'happy.gif';
+                    gif.style.width = '200px';
+                    gif.style.position = 'absolute';
+                    gif.style.animation = 'moveAround 5s infinite alternate ease-in-out';
+                    gif.style.left = Math.random() * (window.innerWidth - 200) + 'px';
+                    gif.style.top = Math.random() * (window.innerHeight - 200) + 'px';
+                    document.getElementById('trip-page').appendChild(gif);
+                    
+                    setTimeout(() => gif.remove(), 10000);
+                }
+            }
+            
+            document.addEventListener("DOMContentLoaded", function() {
+                createBouncingGifs();
+            });
+        </script>
+        <img id="bouncing-gif" src="happy.gif" alt="Celebration GIF" style="max-width: 200px; position: absolute; animation: moveAround 5s infinite alternate ease-in-out;">
+        <h1 class="typing">💌 A Special Note 💌</h1>
+        <p>My love, even though we can't be together on Valentine's Day, we have something beautiful to look forward to. In March, we will embark on a wonderful trip together, making new memories and cherishing every moment. 💖</p>
+        <h2>Our Trip Plan ✈️</h2>
+        <p>Here are some ideas for our adventure:</p>
+        <ul>
+            <li>🌊 A relaxing stay by the beach</li>
+            <li>🏞️ Exploring breathtaking landscapes</li>
+            <li>🍷 Romantic dinners under the stars</li>
+            <li>🛶 Fun activities like kayaking or hiking</li>
+        </ul>
+        <h2>💖 A Personal Letter 💖</h2>
+        <p>My dear, every moment with you is special, and even though we will be apart on Valentine's Day, my heart is always with you. This trip will be our time to celebrate love, laughter, and the joy of being together. I can't wait! 💕</p>
+        <img src="trip_picture.jpg" alt="Our Destination" style="max-width: 300px; border-radius: 15px; margin-top: 15px;">
+    </div>
+    
+    <script>
+        function checkPassword() {
+            let input = document.getElementById('password-input').value;
+            let correctPassword = "20230211";  // Replace with the actual date in DDMMYYYY format
+            
+            if (input === correctPassword) {
+                document.getElementById('password-page').classList.add('hidden');
+                document.getElementById('main-content').classList.remove('hidden');
+            } else {
+                document.getElementById('error-message').style.display = 'block';
+            }
+        }
+
+        function goToTripPage() {
+            document.getElementById('main-content').classList.add('hidden');
+            document.getElementById('trip-page').classList.remove('hidden');
+        }
+    </script>
+
+    <p id="monella-message" style="color: red; font-size: 24px; font-weight: bold; display: none;">Monella! 😂</p>
+    <img id="monella-image" src="monella.png" alt="Funny Reaction" style="max-width: 200px; display: none; margin-top: 10px;">    
+    <script>
+        function moveNoButton() {
+            let image = document.getElementById('monella-image');
+            image.style.display = 'block';
+            setTimeout(() => { image.style.display = 'none'; }, 2500);
+            let button = document.querySelector('.no');
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 50);
+            button.style.position = 'absolute';
+            button.style.left = x + 'px';
+            button.style.top = y + 'px';
+            
+            let message = document.getElementById('monella-message');
+            message.style.display = 'block';
+            setTimeout(() => { message.style.display = 'none'; }, 2500);
+        }
+    </script>
+
+    <script>
+        function goToTripPage() {
+            document.getElementById('main-content').classList.add('hidden');
+            document.getElementById('trip-page').classList.remove('hidden');
+            triggerGifAnimation();
+        }
+        
+        function triggerGifAnimation() {
+            for (let i = 0; i < 6; i++) {
+                let gif = document.createElement('img');
+                gif.src = 'happy.gif'; // Replace with the actual GIF file name
+                gif.style.width = '100px';
+                gif.style.position = 'absolute';
+                gif.style.left = Math.random() * (window.innerWidth - 100) + 'px';
+                gif.style.top = Math.random() * (window.innerHeight - 100) + 'px';
+                gif.style.animation = 'bounce 2s infinite alternate';
+                document.body.appendChild(gif);
+                
+                setTimeout(() => gif.remove(), 7000);
+            }
+        }
+        
+        @keyframes bounce {
+            from { transform: translateY(0px); }
+            to { transform: translateY(-50px); }
+        }
+    </script>
+    <script>
+        function triggerGifAnimation() {
+            for (let i = 0; i < 6; i++) {
+                let gif = document.createElement('img');
+                gif.src = 'happy.gif'; // Replace with your actual GIF file
+                gif.style.width = '100px';
+                gif.style.position = 'absolute';
+                gif.style.left = Math.random() * (window.innerWidth - 150) + 'px';
+                gif.style.top = Math.random() * (window.innerHeight - 150) + 'px';
+                gif.style.animation = 'bounce 1.5s infinite alternate';
+                gif.style.zIndex = '1000';
+                document.body.appendChild(gif);
+                
+                setTimeout(() => gif.remove(), 7000);
+            }
+        }
+    </script>
+    <script>
+        function showGif() {
+            let gif = document.createElement('img');
+            gif.src = 'happy.gif'; // Replace with the actual GIF file name
+            gif.style.width = '150px';
+            gif.style.position = 'absolute';
+            gif.style.left = '50%';
+            gif.style.top = '50%';
+            gif.style.transform = 'translate(-50%, -50%)';
+            gif.style.animation = 'fadeInOut 5s linear';
+            document.getElementById('trip-page').appendChild(gif);
+            
+            setTimeout(() => gif.remove(), 5000);
+        }
+        
+        function goToTripPage() {
+            document.getElementById('main-content').classList.add('hidden');
+            document.getElementById('trip-page').classList.remove('hidden');
+            showGif();
+        }
+        
+        @keyframes fadeInOut {
+            0% { opacity: 0; }
+            50% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+    </script></body>
+</html>
