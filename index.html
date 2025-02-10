@@ -27,11 +27,11 @@
         transition: opacity 0.5s ease-in-out;
         }
         @keyframes moveAround {
-            0% { top: 10%; left: 10%; }
+            0% { top: 30%; left: 10%; }
             25% { top: 20%; left: 70%; }
             50% { top: 60%; left: 50%; }
             75% { top: 80%; left: 20%; }
-            100% { top: 10%; left: 10%; }
+            100% { top: 10%; left: 50%; }
         }
         .image-container {
             display: flex;
@@ -162,6 +162,28 @@
             margin: 0 auto; /* Centers the text block */
             line-height: 1.6; /* Improves readability */
         }
+        #bouncing-gif {
+            position: absolute;
+            left: 20%;  /* Move to the left */
+            top: 20%;  /* Center vertically */
+            transform: translate(-50%, -50%);
+            max-width: 150px;
+            animation: moveAround 5s infinite alternate ease-in-out;
+            display: block; /* Ensure it is visible */
+            z-index: 100; /* Ensure it is above other elements */
+        }
+
+        #bouncing-gif2 {
+            position: absolute;
+            left: 100%;  /* Move to the right */
+            top: 60%;  /* Adjust height */
+            transform: translate(-50%, -50%);
+            max-width: 150px;
+            animation: moveAround 7s infinite alternate ease-in-out;
+            display: block; /* Ensure it is visible */
+            z-index: 100;
+        }
+
     </style>
 </head>
 <body>
@@ -186,27 +208,9 @@
     </div>
     
     <div class="container hidden fade-in" id="trip-page">
-        <script>
-            function createBouncingGifs() {
-                for (let i = 0; i < 5; i++) {
-                    let gif = document.createElement('img');
-                    gif.src = 'happy.gif';
-                    gif.style.width = '200px';
-                    gif.style.position = 'absolute';
-                    gif.style.animation = 'moveAround 5s infinite alternate ease-in-out';
-                    gif.style.left = Math.random() * (window.innerWidth - 200) + 'px';
-                    gif.style.top = Math.random() * (window.innerHeight - 200) + 'px';
-                    document.getElementById('trip-page').appendChild(gif);
+        <img id="bouncing-gif" src="happy.gif" alt="Celebration GIF" style="display: none;">
+        <img id="bouncing-gif2" src="happy.gif" alt="Celebration GIF" style="display: none;">
 
-                    setTimeout(() => gif.remove(), 10000);
-                }
-            }
-
-            document.addEventListener("DOMContentLoaded", function() {
-                createBouncingGifs();
-            });
-        </script>
-        <img id="bouncing-gif" src="happy.gif" alt="Celebration GIF" style="max-width: 200px; position: absolute; animation: moveAround 5s infinite alternate ease-in-out;">
         <div class="text-container">
             <h1>💌 Almost 2 year together  💌</h1>
             <p class="justfied-text">
@@ -219,7 +223,7 @@
         </div>
 
         <div class="text-container">
-            <h2>Our Trip Plan ✈️</h2>
+            <h2>Our Next Plans ✈️</h2>
             <p>Here are some ideas for our adventure:</p>
         </div>
         <div class="image-band">
@@ -247,6 +251,8 @@
         function goToTripPage() {
             document.getElementById('main-content').classList.add('hidden');
             document.getElementById('trip-page').classList.remove('hidden');
+            document.getElementById('bouncing-gif').style.display = 'block';
+            document.getElementById('bouncing-gif2').style.display = 'block';
         }
     </script>
 
@@ -271,70 +277,13 @@
     </script>
 
     <script>
-        function goToTripPage() {
-            document.getElementById('main-content').classList.add('hidden');
-            document.getElementById('trip-page').classList.remove('hidden');
-            triggerGifAnimation();
-        }
-        
-        function triggerGifAnimation() {
-            for (let i = 0; i < 6; i++) {
-                let gif = document.createElement('img');
-                gif.src = 'happy.gif'; // Replace with the actual GIF file name
-                gif.style.width = '100px';
-                gif.style.position = 'absolute';
-                gif.style.left = Math.random() * (window.innerWidth - 100) + 'px';
-                gif.style.top = Math.random() * (window.innerHeight - 100) + 'px';
-                gif.style.animation = 'bounce 2s infinite alternate';
-                document.body.appendChild(gif);
-                
-                setTimeout(() => gif.remove(), 7000);
-            }
-        }
 
         @keyframes bounce {
-            from { transform: translateY(0px); }
-            to { transform: translateY(-50px); }
+            from { transform: translateY(100px); }
+            to { transform: translateY(0px); }
         }
     </script>
     <script>
-        function triggerGifAnimation() {
-            for (let i = 0; i < 6; i++) {
-                let gif = document.createElement('img');
-                gif.src = 'happy.gif'; // Replace with your actual GIF file
-                gif.style.width = '100px';
-                gif.style.position = 'absolute';
-                gif.style.left = Math.random() * (window.innerWidth - 150) + 'px';
-                gif.style.top = Math.random() * (window.innerHeight - 150) + 'px';
-                gif.style.animation = 'bounce 1.5s infinite alternate';
-                gif.style.zIndex = '1000';
-                document.body.appendChild(gif);
-                
-                setTimeout(() => gif.remove(), 7000);
-            }
-        }
-    </script>
-    <script>
-        function showGif() {
-            let gif = document.createElement('img');
-            gif.src = 'happy.gif'; // Replace with the actual GIF file name
-            gif.style.width = '150px';
-            gif.style.position = 'absolute';
-            gif.style.left = '50%';
-            gif.style.top = '50%';
-            gif.style.transform = 'translate(-50%, -50%)';
-            gif.style.animation = 'fadeInOut 5s linear';
-            document.getElementById('trip-page').appendChild(gif);
-
-            setTimeout(() => gif.remove(), 5000);
-        }
-        
-        function goToTripPage() {
-            document.getElementById('main-content').classList.add('hidden');
-            document.getElementById('trip-page').classList.remove('hidden');
-            showGif();
-        }
-
         @keyframes fadeInOut {
             0% { opacity: 0; }
             50% { opacity: 1; }
